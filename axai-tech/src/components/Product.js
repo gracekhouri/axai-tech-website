@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 export default class Product extends Component {
     render() {
         return (
-            <div>
-                
+            <div className="text-white">
+                hello world
             </div>
         )
     }
