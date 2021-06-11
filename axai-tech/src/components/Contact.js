@@ -4,7 +4,7 @@ import './Contact.css'
 export default class Contact extends Component {
     render() {
         return (
-            <div className="bg-dark text-white">
+            <div className="black-bg text-white">
                 <footer>
                     <div className='container'>
                         <div className="card-body">
