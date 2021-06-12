@@ -29,7 +29,7 @@ export default class Nav extends Component {
               </li>
               <li className="nav-item">
                 {/* <a className="nav-link" aria-current="page" href="#">Resources</a> */}
-                <Link className="p-2 nav-link" to="/about" style={{ textDecoration: 'none' }}>Resources </Link>
+                <Link className="p-2 nav-link" to="/resources" style={{ textDecoration: 'none' }}>Resources </Link>
               </li>
 
           </ul>
