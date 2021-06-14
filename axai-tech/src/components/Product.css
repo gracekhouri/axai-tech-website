@@ -5,3 +5,7 @@ h3, h5, h6 {
 p {
     color: white;
 }
+
+.black-bg {
+    background-color: #000000;
+}

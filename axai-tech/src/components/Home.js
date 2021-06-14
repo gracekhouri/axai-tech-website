@@ -6,10 +6,11 @@ export default class Home extends Component {
         return (
             <div className="text-white d-flex">
                 <div className="p-5">
-                    <h1>BETTER </h1>
-                    <h1>DATA </h1>   
-                    <h1>BETTER </h1>
-                    <h1>TREATMENT </h1>
+                    <h1>Better Data</h1>
+                    <h1>Better Treatment</h1>
+                    {/* <h1>Data </h1>   
+                    <h1>Better </h1>
+                    <h1>Treatment </h1> */}
 
                     <div className="p-1">
                         <p>
@@ -31,7 +32,7 @@ export default class Home extends Component {
                     <figure className="figure p-3">
                         <img className="rounded" src={report}></img>
                         <figcaption className="figure-caption text-white">*The report above is a simplified version of the 
-                        Axaitech clinical report for illustrative purposes only.</figcaption>
+                        <br></br>Axaitech clinical report for illustrative purposes only.</figcaption>
                     </figure>
                 </div>
             </div>
