@@ -9,3 +9,11 @@ p {
 .black-bg {
     background-color: #000000;
 }
+
+.background-image {
+    background-image: url('../images/vials.png');
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

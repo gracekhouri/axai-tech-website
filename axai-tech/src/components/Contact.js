@@ -14,10 +14,10 @@ export default class Contact extends Component {
                             </div>
                             <form>
                                 <div className="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1"/>
+                                    <input type="text" className="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1"/>
                                 </div>
                                 <div className="input-group">
-                                    <textarea class="form-control" placeholder="Type your message here..." aria-label="With textarea"></textarea>
+                                    <textarea className="form-control" placeholder="Type your message here..." aria-label="With textarea"></textarea>
                                 </div>
                             </form>
                             <div className="p-2">

@@ -13,15 +13,15 @@ export default class Resources extends Component {
                        Download and complete the fill-able .pdf form below, 
                        and submit to clinical@axaitech.co.za.
                     </p> 
-                    <i class="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
+                    <i className="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
                 </div>
                 <div className="p-3">
                     <h1 className="">Information and Sample Report</h1>
                 </div>
                 <div className="">
-                    <i class="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
-                    <i class="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
-                    <i class="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
+                    <i className="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
+                    <i className="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
+                    <i className="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
                 </div>
             </div>
         )
