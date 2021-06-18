@@ -1,15 +1,13 @@
-.black-bg {
-    background-color: #000000;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-}
-
-h5 {
+h1 {
     font-family: 'Coda Caption', sans-serif;
+    font-size: 50px;
     font-stretch: extra-expanded;
     outline: black;
     outline-offset: 2px;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
 }

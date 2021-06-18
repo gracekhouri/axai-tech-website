@@ -51,14 +51,19 @@ export default class Nav extends Component {
               </li>
             </ul>
             <div>
-              <button className="btn btn-outline-success me-3" type="submit">
+              <button className="btn btn-outline-light me-3" type="submit">
                 <Link className="p-2 nav-link" to="/ologin" style={{ textDecoration: 'none' }}>
                   Doctor Login{' '}
                 </Link>
               </button>
-              <button className="btn btn-outline-success ml-3" type="submit">
+              <button className="btn btn-outline-light me-3" type="submit">
                 <Link className="p-2 nav-link" to="/plogin" style={{ textDecoration: 'none' }}>
                   Patient Login{' '}
+                </Link>
+              </button>
+              <button className="btn btn-outline-light ml-3" type="submit">
+                <Link className="p-2 nav-link" to="/register" style={{ textDecoration: 'none' }}>
+                  Register{' '}
                 </Link>
               </button>
             </div>

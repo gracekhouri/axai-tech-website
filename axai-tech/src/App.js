@@ -10,10 +10,11 @@ import Resources from './components/Resources';
 import About from './components/About';
 import Contact from './components/Contact';
 import Home from './components/Home';
-import background from './images/Background.jpeg';
+import background from './images/option7.jpg';
 import Firebase from './firebase/firebase';
 import OLogin from './components/login/OLogin';
 import PLogin from './components/login/PLogin';
+import register from './components/login/register';
 import PropsRoute from './components/routing/PropsRoute';
 
 // const auth = Firebase.instance().auth;
@@ -30,6 +31,7 @@ class App extends Component {
           <Route path="/resources" exact component={Resources} />
           <PropsRoute path='/ologin' exact component={OLogin}/>
           <PropsRoute path='/plogin' exact component={PLogin}/>
+          <PropsRoute path='/register' exact component={register}/>
           <div className="p-5"></div>
 
           <Contact />
