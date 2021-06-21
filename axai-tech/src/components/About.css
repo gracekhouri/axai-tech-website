@@ -2,6 +2,14 @@ h1, h3, h5, h6 {
     color: #5DDADB;
 }
 
+.shadow{
+    text-shadow: 4px 4px rgb(48, 46, 46);
+}
+.bl{
+    color: white;
+    text-shadow: 2px 2px rgb(48, 46, 46);
+}
+
 .jumbo {
     font-size: 200px;
 }
@@ -20,11 +28,11 @@ h1, h3, h5, h6 {
     width: 60%;
 }
 
-.image {
-    width: 100%;
-    object-fit: contain;
-}
-
 .image-holder {
     width: 350px;
+}
+
+.image-size{
+    width: 60%;
+    object-fit: contain;
 }

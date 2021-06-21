@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './components/Nav';
 import Nav from './components/Nav';
 import Product from './components/Product';
 import Resources from './components/Resources';
@@ -17,11 +16,32 @@ import PLogin from './components/login/PLogin';
 import register from './components/login/register';
 import PropsRoute from './components/routing/PropsRoute';
 
-// const auth = Firebase.instance().auth;
+const auth = Firebase.instance().auth;
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    this.state={
+      user: null,
+      loading: true
+    };
+  }
+
+  componentDidMount(){
+    auth.onAuthStateChanged((user) => {
+      this.setState({user, loading: false});
+    });
+  }
+
   render() {
+    const {user, loading} = this.state;
     return (
+      <div>
+        {
+        loading ? 
+          <div>Loading</div>
+          :
       <BrowserRouter>
         <div style={{ backgroundImage: `url(${background})` }}>
           <Nav />
@@ -29,14 +49,17 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/about" exact component={About} />
           <Route path="/resources" exact component={Resources} />
-          <PropsRoute path='/ologin' exact component={OLogin}/>
-          <PropsRoute path='/plogin' exact component={PLogin}/>
-          <PropsRoute path='/register' exact component={register}/>
+          <PropsRoute path='/ologin' exact component={OLogin} user={user}/>
+          <PropsRoute path='/plogin' exact component={PLogin} user={user}/>
+          <PropsRoute path='/register' exact component={register} user={user}/>
           <div className="p-5"></div>
 
           <Contact />
         </div>
       </BrowserRouter>
+      }
+      </div>
+      
     );
   }
 }
