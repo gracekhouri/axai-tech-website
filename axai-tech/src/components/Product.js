@@ -9,7 +9,8 @@ export default class Product extends Component {
       <div>
         <div className="text-white d-flex black-bg">
           <div className="p-5">
-            <h3>WHY LIQUID BIOPSY?</h3>
+            <h2 className="h2-format">WHY LIQUID BIOPSY?</h2>
+
             <hr></hr>
             <div className="p-1">
               <p>
@@ -30,13 +31,13 @@ export default class Product extends Component {
         </div>
 
         <div className="background-image">
-          <div className="text-center p-5">
-            <h3>HOW IT WORKS</h3>
+          <div className=" text-center p-5">
+            <h2 className="h2-format shadow">HOW IT WORKS</h2>
             <div className="justify-content-sm-evenly d-flex">
               <div className="card-transparent">
                 <div className="card-body row-3">
-                  <h5 className="card-title col-12">01</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">BLOOD DRAW</h6>
+                  <h5 className="card-title col-12 jumbo">1</h5>
+                  <h6 className="card-subtitle mb-2 sub-header border-2 border-bottom">BLOOD DRAW</h6>
                   <p className="card-text">
                     Patients diagnosed with any form of cancer submit a blood sample, authorized by
                     their primary care physician, collected at any convenient location. No invasive
@@ -47,8 +48,8 @@ export default class Product extends Component {
 
               <div className="card-transparent">
                 <div className="card-body row-3">
-                  <h5 className="card-title col-12">02</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">ANALYSIS</h6>
+                  <h5 className="card-title col-12 jumbo">2</h5>
+                  <h6 className="card-subtitle mb-2 sub-header border-2 border-bottom">ANALYSIS</h6>
                   <p className="card-text">
                     We analyze the patient's DNA, screening for 57 unique, clinically validated
                     markers associated with chemotherapy drug resistance.
@@ -58,8 +59,8 @@ export default class Product extends Component {
 
               <div className="card-transparent">
                 <div className="card-body row-3">
-                  <h5 className="card-title col-12">03</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">ACTIONABLE RESULTS</h6>
+                  <h5 className="card-title col-12 jumbo">3</h5>
+                  <h6 className="card-subtitle mb-2 sub-header border-2 border-bottom">ACTIONABLE RESULTS</h6>
                   <p className="card-text">
                     We provide a report to the primary care physician outlining the complete genomic
                     profile relating to chemotherapy drug resistance, with actionable insights to
@@ -69,11 +70,11 @@ export default class Product extends Component {
               </div>
             </div>
 
-            <div className="mx-auto p-5">
+            {/* <div className="mx-auto p-5">
               <figure className="text-center">
-                <img className="vw-50 vh-50" src={web} alt=""></img>
+                <img className=" image-size" src={web} alt=""></img>
               </figure>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

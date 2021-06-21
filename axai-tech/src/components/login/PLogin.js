@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+
 import './styles.css';
+
 import Firebase from '../../firebase/firebase';
 const auth = Firebase.instance().auth;
 
@@ -44,6 +46,7 @@ export default class PLogin extends Component {
     render() {
         return (
             <div className='container col-7 mt-2'>
+                <div className="p-5"></div>
                 <div className='card card-body text-center'>
                     <form onSubmit={(e)=> this.login(e)}>
                         <h1 className='h3 mt-3 text-center'>Patient Portal Login</h1>
@@ -65,6 +68,8 @@ export default class PLogin extends Component {
                         </div> 
                     </form>
                 </div>
+                
+                <div className="p-5"></div>
             </div>
         )
     }

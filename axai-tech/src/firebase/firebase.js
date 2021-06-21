@@ -1,7 +1,3 @@
-// import firebase from 'firebase';
-// import 'firebase/firestore';
-// import 'firebase/auth';
-
 import firebase from "firebase";
 import 'firebase/auth'
 import 'firebase/firestore'
@@ -9,7 +5,7 @@ import 'firebase/firestore'
 class Firebase{
     static singleton;
     static instance(){
-        if (!Firebase.singleton){
+        if (!Firebase.singleton) {
             Firebase.singleton = new Firebase();
         }
         return Firebase.singleton;

@@ -27,6 +27,8 @@ export default class Home extends Component {
                         <figcaption className="figure-caption text-white">*The report above is a simplified version of the 
                         <br></br>Axaitech clinical report for illustrative purposes only.</figcaption>
                     </figure>
+                    
+                    <div className="p-5"></div>
 
                 </div>
                 </div>

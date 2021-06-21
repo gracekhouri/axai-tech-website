@@ -23,6 +23,7 @@ export default class Resources extends Component {
                     <i className="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
                     <i className="bi bi-file-earmark-pdf-fill pdf-change m-5"></i>
                 </div>
+                <div className="p-5"></div>
             </div>
         )
     }

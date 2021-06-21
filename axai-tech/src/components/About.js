@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './About.css';
  import eye from '../images/eye.png';
  import tech from '../images/tech.png';
-import unit from '../images/Untitled_Artwork.png';
+import unit from '../images/lines.png';
 
 export default class About extends Component {
   render() {
@@ -51,6 +51,8 @@ export default class About extends Component {
             </p>
           </div>
         </div>
+        
+        <div className="p-5"></div>
       </div>
     );
   }

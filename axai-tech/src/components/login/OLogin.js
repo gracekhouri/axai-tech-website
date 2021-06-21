@@ -45,6 +45,7 @@ export default class OLogin extends Component {
     render() {
         return (
             <div className='container col-7 mt-2'>
+                <div className="p-5"></div>
                 <div className='card card-body text-center'>
                     <form onSubmit={(e)=> this.login(e)}>
                         <h1 className='h3 mt-3 text-center'>Doctor Portal Login</h1>
@@ -67,6 +68,8 @@ export default class OLogin extends Component {
                         </div> 
                     </form>
                 </div>
+                
+                <div className="p-5"></div>
             </div>
         )
     }

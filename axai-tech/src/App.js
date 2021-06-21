@@ -52,7 +52,6 @@ class App extends Component {
           <PropsRoute path='/ologin' exact component={OLogin} user={user}/>
           <PropsRoute path='/plogin' exact component={PLogin} user={user}/>
           <PropsRoute path='/register' exact component={register} user={user}/>
-          <div className="p-5"></div>
 
           <Contact />
         </div>
