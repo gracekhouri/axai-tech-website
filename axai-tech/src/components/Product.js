@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import chem from '../images/chem.png';
 import './Product.css';
-import web from '../images/web.webp';
+
 
 export default class Product extends Component {
   render() {

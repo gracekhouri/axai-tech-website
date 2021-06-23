@@ -44,7 +44,7 @@ class App extends Component {
           :
       <BrowserRouter>
         <div style={{ backgroundImage: `url(${background})` }}>
-          <Nav />
+          <Nav user={user}/>
           <Route path="/product" exact component={Product} />
           <Route path="/" exact component={Home} />
           <Route path="/about" exact component={About} />

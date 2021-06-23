@@ -2,8 +2,59 @@ import React, { Component } from 'react';
 import ximage from '../images/Axaitech.png';
 import { Link } from 'react-router-dom';
 import './Nav.css';
+import Firebase from '../firebase/firebase';
+const auth = Firebase.instance().auth;
 
 export default class Nav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: props.user
+    };
+  }
+
+  async logout() {
+    try {
+      await auth.signOut();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  renderDocLogin(){
+    if(this.props.user){return;}
+    return <button className="btn btn-outline-light me-3" type="submit">
+      <Link className="p-2 nav-link" to="/ologin" style={{ textDecoration: 'none' }}>
+      Doctor Login{' '}
+      </Link>
+    </button>
+  }
+  renderPatientLogin(){
+    if(this.props.user){return;}
+    return <button className="btn btn-outline-light me-3" type="submit">
+                <Link className="p-2 nav-link" to="/plogin" style={{ textDecoration: 'none' }}>
+                  Patient Login{' '}
+                </Link>
+              </button>
+  }
+
+  renderRegister(){
+    if(this.props.user){return;}
+    return <button className="btn btn-outline-light ml-3" type="submit">
+                <Link className="p-2 nav-link" to="/register" style={{ textDecoration: 'none' }}>
+                  Register{' '}
+                </Link>
+              </button>
+  }
+
+  renderLogout(){
+    if (!this.props.user) { return; }
+    return <div onClick={()=> this.logout()} className="btn btn-primary">Logout</div>
+  }
+
+  
+
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark black-bg">
@@ -11,7 +62,6 @@ export default class Nav extends Component {
           <Link to="/">
             <img src={ximage} alt=""></img>
           </Link>
-          {/* <a className="navbar-brand" href="#"><img src={ximage}></img></a> */}
           <button
             className="navbar-toggler"
             type="button"
@@ -29,43 +79,28 @@ export default class Nav extends Component {
                 <Link className="p-2 nav-link" to="/" style={{ textDecoration: 'none' }}>
                   Home{' '}
                 </Link>
-                {/* <a className="nav-link" aria-current="page" href="#">Home</a> */}
               </li>
               <li className="nav-item">
-                {/* <a className="nav-link" aria-current="page" href="#">About</a> */}
                 <Link className="p-2 nav-link" to="/about" style={{ textDecoration: 'none' }}>
                   About{' '}
                 </Link>
               </li>
               <li className="nav-item">
-                {/* <a className="nav-link" href="#">Product</a> */}
                 <Link className="p-2 nav-link" to="/product" style={{ textDecoration: 'none' }}>
                   Product{' '}
                 </Link>
               </li>
               <li className="nav-item">
-                {/* <a className="nav-link" aria-current="page" href="#">Resources</a> */}
                 <Link className="p-2 nav-link" to="/resources" style={{ textDecoration: 'none' }}>
                   Resources{' '}
                 </Link>
               </li>
             </ul>
             <div>
-              <button className="btn btn-outline-light me-3" type="submit">
-                <Link className="p-2 nav-link" to="/ologin" style={{ textDecoration: 'none' }}>
-                  Doctor Login{' '}
-                </Link>
-              </button>
-              <button className="btn btn-outline-light me-3" type="submit">
-                <Link className="p-2 nav-link" to="/plogin" style={{ textDecoration: 'none' }}>
-                  Patient Login{' '}
-                </Link>
-              </button>
-              <button className="btn btn-outline-light ml-3" type="submit">
-                <Link className="p-2 nav-link" to="/register" style={{ textDecoration: 'none' }}>
-                  Register{' '}
-                </Link>
-              </button>
+              {this.renderDocLogin()}
+              {this.renderPatientLogin()}
+              {this.renderRegister()}
+              {this.renderLogout()}
             </div>
           </div>
         </div>
