@@ -11,7 +11,7 @@ export default class GuardedRoute extends Component {
         if (user) {
           return <Component {...{ ...props, ...rest, user }} />
         } else {
-          return <Redirect to="/login" />
+          return <Redirect to="/" />
         }
       }} />
     )

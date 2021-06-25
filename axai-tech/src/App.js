@@ -9,12 +9,14 @@ import Resources from './components/Resources';
 import About from './components/About';
 import Contact from './components/Contact';
 import Home from './components/Home';
+import Portal from './components/Portal';
 import background from './images/option7.jpg';
 import Firebase from './firebase/firebase';
 import OLogin from './components/login/OLogin';
 import PLogin from './components/login/PLogin';
 import register from './components/login/register';
 import PropsRoute from './components/routing/PropsRoute';
+import GuardedRoute from './components/routing/GuardedRoute';
 
 const auth = Firebase.instance().auth;
 
@@ -30,7 +32,7 @@ class App extends Component {
 
   componentDidMount(){
     auth.onAuthStateChanged((user) => {
-      this.setState({user, loading: false});
+      this.setState({user: user, loading: false});
     });
   }
 
@@ -52,6 +54,9 @@ class App extends Component {
           <PropsRoute path='/ologin' exact component={OLogin} user={user}/>
           <PropsRoute path='/plogin' exact component={PLogin} user={user}/>
           <PropsRoute path='/register' exact component={register} user={user}/>
+          <GuardedRoute path='/portal' exact component={Portal} user={user} />
+          
+          
 
           <Contact />
         </div>

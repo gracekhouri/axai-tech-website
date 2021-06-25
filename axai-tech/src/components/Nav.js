@@ -52,6 +52,15 @@ export default class Nav extends Component {
     return <div onClick={()=> this.logout()} className="btn btn-primary">Logout</div>
   }
 
+  renderStatus() {
+    if (!this.props.user) { return; }
+    return <li className="nav-item">
+                <Link className="p-2 nav-link" to="/portal" style={{ textDecoration: 'none' }}>
+                  Portal{' '}
+                </Link>
+            </li>
+  }
+
   
 
 
@@ -95,6 +104,7 @@ export default class Nav extends Component {
                   Resources{' '}
                 </Link>
               </li>
+              {this.renderStatus()}
             </ul>
             <div>
               {this.renderDocLogin()}

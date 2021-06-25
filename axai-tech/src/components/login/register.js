@@ -12,11 +12,26 @@ export default class register extends Component {
             this.props.history.push('/');
         }
 
+        this.auth = Firebase.instance().auth;
+        this.db = Firebase.instance().db;
+
         this.state= {
+            firstName: '',
+            surname: '',
             email: '',
             password: ''
         }
     }
+    onNameChanged(e){
+        this.setState({
+            firstName: e.target.value,
+        });
+    }
+    onSurnameChanged(e){
+        this.setState({
+            surname: e.target.value,
+        });
+    } 
     onEmailChanged(e){
         this.setState({
             email: e.target.value,
@@ -35,11 +50,19 @@ export default class register extends Component {
         try{
             const {email, password } = this.state;
             await auth.createUserWithEmailAndPassword(email, password);
+
+            await this.db.collection('user-roles').doc().set({
+                userId: this.auth.currentUser.uid,
+                role: 'doctor'
+            });
+
             this.props.history.push('/');
         } catch(err){
             console.log(err);
         }
 
+    
+      
     }
 
     render() {
@@ -50,12 +73,16 @@ export default class register extends Component {
                     <form onSubmit={(e)=> this.register(e)}>
                         <h1 className='h3 mt-3 text-center'>Please Register</h1>
                         <div className='p-3 body'>
-                            <input type='text' className='form-control'
+                            <input value={this.state.firstName}
+                            onChange={(e) => this.onNameChanged(e)}
+                            type='text' className='form-control'
                             placeholder='First Name'/>
                         </div>
-                        <div className='p-3 body'>
-                            <input type='text' className='form-control'
-                            placeholder='Surname'/>
+                        <div className="p-3 body">
+                            <input value={this.state.surname}
+                            onChange={(e) => this.onSurnameChanged(e)}
+                            type='text' className='form-control' 
+                            placeholder='surname'/>
                         </div>
                         <div className="p-3 body">
                             <input value={this.state.email}
@@ -81,6 +108,7 @@ export default class register extends Component {
                         </div> 
                     </form>
                 </div>
+
                 
                 <div className="p-5"></div>
             </div>
