@@ -55,8 +55,8 @@ export default class Nav extends Component {
   renderStatus() {
     if (!this.props.user) { return; }
     return <li className="nav-item">
-                <Link className="p-2 nav-link" to="/portal" style={{ textDecoration: 'none' }}>
-                  Portal{' '}
+                <Link className="p-2 nav-link" to="/Profile" style={{ textDecoration: 'none' }}>
+                  Profile{' '}
                 </Link>
             </li>
   }

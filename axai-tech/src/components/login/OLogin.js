@@ -48,7 +48,7 @@ export default class OLogin extends Component {
                 <div className="p-5"></div>
                 <div className='card card-body text-center'>
                     <form onSubmit={(e)=> this.login(e)}>
-                        <h1 className='h3 mt-3 text-center'>Doctor Portal Login</h1>
+                        <h1 className='h3 mt-3 text-center'>Doctor Profile Login</h1>
                         <div className='p-3 body'>
                             <input value={this.state.email} 
                             onChange={(e)=> this.onEmailChanged(e)}

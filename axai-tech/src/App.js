@@ -9,7 +9,7 @@ import Resources from './components/Resources';
 import About from './components/About';
 import Contact from './components/Contact';
 import Home from './components/Home';
-import Portal from './components/Portal';
+import Profile from './components/Profile';
 import background from './images/option7.jpg';
 import Firebase from './firebase/firebase';
 import OLogin from './components/login/OLogin';
@@ -54,7 +54,7 @@ class App extends Component {
           <PropsRoute path='/ologin' exact component={OLogin} user={user}/>
           <PropsRoute path='/plogin' exact component={PLogin} user={user}/>
           <PropsRoute path='/register' exact component={register} user={user}/>
-          <GuardedRoute path='/portal' exact component={Portal} user={user} />
+          <GuardedRoute path='/profile' exact component={Profile} user={user} />
           
           
 

@@ -42,10 +42,10 @@ class Header extends Component {
     </li>
   }
 
-  renderPortalLink() {
+  renderProfileLink() {
     if (!this.props.user) { return; }
     return <li className="nav-item">
-      <Link to="/portal" className="nav-link">Portal</Link>
+      <Link to="/profile" className="nav-link">Profile</Link>
     </li>
   }
   renderLogoutLink() {
@@ -59,7 +59,7 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link to="/portal" className="navbar-brand"> Portal</Link>
+          <Link to="/profile" className="navbar-brand"> Profile</Link>
           <button className="navbar-toggler" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
