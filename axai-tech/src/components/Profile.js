@@ -16,15 +16,6 @@ export default class Profile extends Component {
         }
     }
 
-    mover() {
-        let t = 0;
-        t = setInterval(move(), 1);
-        return t;
-    }
-
-    move(t) {
-        return t = t + 1;
-    }
     async componentDidMount() {
       //  const {user} = this.props;
       //  const snap = await this.db.collection('user-role').where('userId', '==', user.uid).get();
