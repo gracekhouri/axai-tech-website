@@ -36,8 +36,9 @@ class App extends Component {
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
       this.setState({ user: user, loading: false });
-      console.log(user);
-      this.getUserRole(user.uid);
+      if (user !== null) {
+        this.getUserRole(user.uid);
+      }
     });
   }
 
