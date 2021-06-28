@@ -9,7 +9,12 @@ export default class GuardedRoute extends Component {
     return (
       <Route {...rest} render={(props) => {
         if (user) {
-          return <Component {...{ ...props, ...rest, user }} />
+          if (user.role==="doctor") {
+            return <Component {...{ ...props, ...rest, user }} />
+          }
+          if (user.role==="patient") {
+            return <Component {...{ ...props, ...rest, user }} />
+          }
         } else {
           return <Redirect to="/" />
         }
