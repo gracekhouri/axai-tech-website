@@ -10,60 +10,84 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import DoctorPortal from './components/DoctorPortal';
+import PatientPortal from './components/PatientPortal';
 import background from './images/option7.jpg';
 import Firebase from './firebase/firebase';
-import OLogin from './components/login/OLogin';
-import PLogin from './components/login/PLogin';
+import Login from './components/login/Login';
 import register from './components/login/register';
 import PropsRoute from './components/routing/PropsRoute';
 import GuardedRoute from './components/routing/GuardedRoute';
 
 const auth = Firebase.instance().auth;
+const db = Firebase.instance().db;
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state={
+    this.state = {
       user: null,
-      loading: true
+      loading: true,
+      role: '',
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     auth.onAuthStateChanged((user) => {
-      this.setState({user: user, loading: false});
+      this.setState({ user: user, loading: false });
+      console.log(user);
+      this.getUserRole(user.uid);
+    });
+  }
+
+  async getUserRole(userUid) {
+    const snap = await db.collection('user-roles').where('userId', '==', userUid).get();
+    snap.forEach((doc) => {
+      const role = doc.data().role;
+      this.setState({
+        role: role,
+      });
     });
   }
 
   render() {
-    const {user, loading} = this.state;
+    const { user, role, loading } = this.state;
     return (
       <div>
-        {
-        loading ? 
+        {loading ? (
           <div>Loading</div>
-          :
-      <BrowserRouter>
-        <div style={{ backgroundImage: `url(${background})` }}>
-          <Nav user={user}/>
-          <Route path="/product" exact component={Product} />
-          <Route path="/" exact component={Home} />
-          <Route path="/about" exact component={About} />
-          <Route path="/resources" exact component={Resources} />
-          <PropsRoute path='/ologin' exact component={OLogin} user={user}/>
-          <PropsRoute path='/plogin' exact component={PLogin} user={user}/>
-          <PropsRoute path='/register' exact component={register} user={user}/>
-          <GuardedRoute path='/profile' exact component={Profile} user={user} />
-          
-          
+        ) : (
+          <BrowserRouter>
+            <div style={{ backgroundImage: `url(${background})` }}>
+              <Nav user={user} />
+              <Route path="/product" exact component={Product} />
+              <Route path="/" exact component={Home} />
+              <Route path="/about" exact component={About} />
+              <Route path="/resources" exact component={Resources} />
+              <PropsRoute path="/login" exact component={Login} user={user} />
+              <PropsRoute path="/register" exact component={register} user={user} />
+              <GuardedRoute path="/profile" exact component={Profile} user={user} />
+              <GuardedRoute
+                path="/doctor-portal"
+                exact
+                component={DoctorPortal}
+                user={user}
+                role={role}
+              />
+              <GuardedRoute
+                path="/patient-portal"
+                exact
+                component={PatientPortal}
+                user={user}
+                role={role}
+              />
 
-          <Contact />
-        </div>
-      </BrowserRouter>
-      }
+              <Contact />
+            </div>
+          </BrowserRouter>
+        )}
       </div>
-      
     );
   }
 }

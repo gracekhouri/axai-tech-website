@@ -3,7 +3,7 @@ import './styles.css';
 import Firebase from '../../firebase/firebase';
 const auth = Firebase.instance().auth;
 
-export default class OLogin extends Component {
+export default class Login extends Component {
     constructor(props){
         super(props);
 
@@ -35,7 +35,8 @@ export default class OLogin extends Component {
         try{
             const {email, password } = this.state;
             await auth.signInWithEmailAndPassword(email,password);
-            this.props.history.push('/');
+            this.props.history.push('/doctor-portal');
+
         }catch(err){
             console.log(err);
         }
@@ -48,7 +49,7 @@ export default class OLogin extends Component {
                 <div className="p-5"></div>
                 <div className='card card-body text-center'>
                     <form onSubmit={(e)=> this.login(e)}>
-                        <h1 className='h3 mt-3 text-center'>Doctor Profile Login</h1>
+                        <h1 className='h3 mt-3 text-center'>Profile Login</h1>
                         <div className='p-3 body'>
                             <input value={this.state.email} 
                             onChange={(e)=> this.onEmailChanged(e)}

@@ -21,19 +21,19 @@ export default class Nav extends Component {
     }
   }
 
-  renderDocLogin(){
+  // renderDocLogin(){
+  //   if(this.props.user){return;}
+  //   return <button className="btn btn-outline-light me-3" type="submit">
+  //     <Link className="p-2 nav-link" to="/ologin" style={{ textDecoration: 'none' }}>
+  //     Doctor Login{' '}
+  //     </Link>
+  //   </button>
+  // }
+  renderLogin(){
     if(this.props.user){return;}
     return <button className="btn btn-outline-light me-3" type="submit">
-      <Link className="p-2 nav-link" to="/ologin" style={{ textDecoration: 'none' }}>
-      Doctor Login{' '}
-      </Link>
-    </button>
-  }
-  renderPatientLogin(){
-    if(this.props.user){return;}
-    return <button className="btn btn-outline-light me-3" type="submit">
-                <Link className="p-2 nav-link" to="/plogin" style={{ textDecoration: 'none' }}>
-                  Patient Login{' '}
+                <Link className="p-2 nav-link" to="/login" style={{ textDecoration: 'none' }}>
+                  Login{' '}
                 </Link>
               </button>
   }
@@ -107,8 +107,7 @@ export default class Nav extends Component {
               {this.renderStatus()}
             </ul>
             <div>
-              {this.renderDocLogin()}
-              {this.renderPatientLogin()}
+              {this.renderLogin()}
               {this.renderRegister()}
               {this.renderLogout()}
             </div>
