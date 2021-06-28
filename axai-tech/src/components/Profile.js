@@ -30,7 +30,6 @@ export default class Profile extends Component {
     }
 
 
-
     render() {
         // const {first, surname} = this.state;
         return (
