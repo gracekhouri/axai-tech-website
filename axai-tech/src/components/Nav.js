@@ -21,14 +21,6 @@ export default class Nav extends Component {
     }
   }
 
-  // renderDocLogin(){
-  //   if(this.props.user){return;}
-  //   return <button className="btn btn-outline-light me-3" type="submit">
-  //     <Link className="p-2 nav-link" to="/ologin" style={{ textDecoration: 'none' }}>
-  //     Doctor Login{' '}
-  //     </Link>
-  //   </button>
-  // }
   renderLogin(){
     if(this.props.user){return;}
     return <button className="btn btn-outline-light me-3" type="submit">
@@ -55,7 +47,7 @@ export default class Nav extends Component {
   renderStatus() {
     if (!this.props.user) { return; }
     return <li className="nav-item">
-                <Link className="p-2 nav-link" to="/Profile" style={{ textDecoration: 'none' }}>
+                <Link className="p-2 nav-link" to="/doctor-portal" style={{ textDecoration: 'none' }}>
                   Profile{' '}
                 </Link>
             </li>

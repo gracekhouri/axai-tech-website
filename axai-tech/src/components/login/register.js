@@ -62,7 +62,7 @@ export default class register extends Component {
         role: this.state.role,
       });
 
-      this.props.history.push('/');
+      this.props.history.push('/doctor-portal');
     } catch (err) {
       console.log(err);
     }
@@ -111,11 +111,14 @@ export default class register extends Component {
                 placeholder="Password"
               />
             </div>
-            <div>Add a switch to change between doctor and patient signup</div>
-            <div className="p-3 body">
-              <p className="text-black">**For Oncologists Only</p>
-              <input type="text" className="form-control" placeholder="Doctor #" />
+            <div className='row'>
+              <p className='black col-7'>Click Here if a Physician</p>
+              <div className="form-check form-switch text-center col-5">
+                <input onClick={()=> this.toggleSwitch()} className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
+                {/* <label class="form-check-label" for="flexSwitchCheckDefault">Click Here</label> */}
+              </div>
             </div>
+            
             <div className="text-center mt-4 body">
               <button className="btn btn-primary px-5" type="submit">
                 Register

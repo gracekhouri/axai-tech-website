@@ -9,7 +9,7 @@ import Resources from './components/Resources';
 import About from './components/About';
 import Contact from './components/Contact';
 import Home from './components/Home';
-import Profile from './components/Profile';
+// import Profile from './components/Profile';
 import DoctorPortal from './components/DoctorPortal';
 import PatientPortal from './components/PatientPortal';
 import background from './images/option7.jpg';
@@ -68,7 +68,7 @@ class App extends Component {
               <Route path="/resources" exact component={Resources} />
               <PropsRoute path="/login" exact component={Login} user={user} />
               <PropsRoute path="/register" exact component={register} user={user} />
-              <GuardedRoute path="/profile" exact component={Profile} user={user} />
+              {/* <GuardedRoute path="/profile" exact component={Profile} user={user} /> */}
               <GuardedRoute
                 path="/doctor-portal"
                 exact

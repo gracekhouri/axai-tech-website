@@ -12,6 +12,18 @@ export default class Contact extends Component {
     };
   }
 
+  emailchanged(e){
+    this.setState({
+      email: e.target.value
+    });
+  }
+
+  messagechanged(e){
+    this.setState({
+      message: e.target.value
+    });
+  }
+
   async sendEmail() {
     const transporter = nodemailer.createTransport({
       host: 'smtp.ipage.com',
@@ -31,13 +43,14 @@ export default class Contact extends Component {
       from: this.state.email,
       to: 'info@axaitech.co.za',
       subject: 'Consultation Request',
-      html: `
-                <p>Hello,</p>
-                <br>
-                <p>I would like to book a consultation</p>
-                <br>
-                <p>Regards.</p>
-              `,
+      html: this.state.message
+      // `
+      //           <p>Hello,</p>
+      //           <br>
+      //           <p>I would like to book a consultation</p>
+      //           <br>
+      //           <p>Regards.</p>
+      //         `,
     };
 
     await transporter.sendMail(options);
@@ -56,7 +69,8 @@ export default class Contact extends Component {
               </div>
               <form>
                 <div className="input-group mb-3">
-                  <input
+                  <input value={this.state.email}
+                    onChange={(e) => this.emailchanged(e)}
                     type="text"
                     className="form-control"
                     placeholder="Email"
@@ -65,14 +79,15 @@ export default class Contact extends Component {
                   />
                 </div>
                 <div className="input-group">
-                  <textarea
+                  <textarea value={this.state.message} 
+                    onChange={(e) => this.messagechanged(e)}
                     className="form-control"
                     placeholder="Type your message here..."
                     aria-label="With textarea"
                   ></textarea>
                 </div>
               </form>
-              <button onClick={() => this.sendEmail()}>Send Request</button>
+              <button className='btn btn-light mt-3' onClick={() => this.sendEmail()}>Send Request </button>
               <div className="p-2">
                 <p>
                   * Please note that due to HPCSA regulations all genetic screening tests must be
@@ -94,7 +109,7 @@ export default class Contact extends Component {
                 </div>
               </div>
 
-              <p className="text-center">© 2020 by Axaitech (Pty) Ltd.</p>
+              <p className="text-center">© 2021 by Axaitech (Pty) Ltd.</p>
             </div>
           </div>
         </footer>
