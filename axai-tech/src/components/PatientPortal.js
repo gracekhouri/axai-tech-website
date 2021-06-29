@@ -13,6 +13,8 @@ export default class PatientPortal extends Component {
                 surname: '',
                 email: '',
                 password: '',
+                width: '12.5%'
+                // width percentages should be 12.5, 25, 37.5, 50, 62.5, 75, 87.5, and 100 corresponding with all checkpoints
         }
     }
 
@@ -46,7 +48,7 @@ export default class PatientPortal extends Component {
                             Progress: 
                             <div class="progress">
                                 {/* Half at 210 */}
-                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: 210}}></div>
+                                <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{width: this.state.width}}></div>
                             </div>
                             <p>
                                 Messages from your provider
