@@ -96,7 +96,6 @@ export default class Nav extends Component {
                   Resources{' '}
                 </Link>
               </li>
-              {this.renderStatus()}
             </ul>
             <div>
               {this.renderLogin()}

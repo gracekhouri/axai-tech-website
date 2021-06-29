@@ -75,6 +75,12 @@ export default class register extends Component {
         role: this.state.role,
       });
 
+      await this.db.collection('user-name').doc().set({
+        userId: this.auth.currentUser.uid,
+        firstName: this.state.firstName,
+        surname: this.state.surname,
+      });
+
       this.props.history.push('/doctor-portal');
     } catch (err) {
       console.log(err);
