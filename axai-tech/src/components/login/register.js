@@ -4,6 +4,7 @@ import Firebase from '../../firebase/firebase';
 const auth = Firebase.instance().auth;
 
 export default class register extends Component {
+
   constructor(props) {
     super(props);
 
@@ -19,7 +20,8 @@ export default class register extends Component {
       surname: '',
       email: '',
       password: '',
-      role: 'patient'
+      role: 'patient',
+      counter: 1
     };
   }
   onNameChanged(e) {
@@ -45,9 +47,20 @@ export default class register extends Component {
   }
 
   toggleSwitch() {
-    this.setState({
-        role: 'doctor'
-    });
+
+    let count = this.state.counter;
+
+    this.setState({counter: count + 1})
+
+    if (this.state.counter % 2 === 1) {
+        this.setState({
+          role: 'doctor'
+      });
+    } else {
+      this.setState({
+          role: 'patient'
+      });
+    }
   }
 
   async register(e) {
