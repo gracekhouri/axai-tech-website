@@ -1,3 +1,5 @@
+/* PURPOSE OF THIS PAGE:
+THIS CODE IS FOR THE NAVIGATION BAR ATOP ALL THE PAGES OF THE APP*/
 import React, { Component } from 'react';
 import ximage from '../images/Axaitech.png';
 import { Link } from 'react-router-dom';
@@ -52,9 +54,6 @@ export default class Nav extends Component {
                 </Link>
             </li>
   }
-
-  
-
 
   render() {
     return (

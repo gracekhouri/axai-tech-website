@@ -1,3 +1,9 @@
+/*
+PURPOSE OF THIS PAGE:
+this code is intended to hide specific pages if a user isn't logged in
+and when a user is logged in, this code indicates where to direct that user
+ */
+
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 

@@ -24,6 +24,7 @@ export default class Contact extends Component {
     });
   }
 
+  //FIXME:::this function is intended to actually send an email to info@axaitech.co.za from a potential user
   async sendEmail() {
     const transporter = nodemailer.createTransport({
       host: 'smtp.ipage.com',
@@ -44,13 +45,6 @@ export default class Contact extends Component {
       to: 'info@axaitech.co.za',
       subject: 'Consultation Request',
       html: this.state.message
-      // `
-      //           <p>Hello,</p>
-      //           <br>
-      //           <p>I would like to book a consultation</p>
-      //           <br>
-      //           <p>Regards.</p>
-      //         `,
     };
 
     await transporter.sendMail(options);

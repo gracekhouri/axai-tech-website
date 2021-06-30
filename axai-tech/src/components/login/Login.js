@@ -1,6 +1,12 @@
+/*
+PURPOSE OF THIS PAGE:
+this code is for the login page on the website and handles the login of all users
+ */
+
 import React, { Component } from 'react'
 import './styles.css';
 import Firebase from '../../firebase/firebase';
+import ShowIf from '../ShowIf';
 const auth = Firebase.instance().auth;
 
 export default class Login extends Component {
@@ -13,7 +19,8 @@ export default class Login extends Component {
               
         this.state= {
             email: '',
-            password: ''
+            password: '',
+            error: '',
         }
     }
             
@@ -28,6 +35,7 @@ export default class Login extends Component {
             password: e.target.value
         });
     }
+    
             
     async login(e){
         e.preventDefault();
@@ -38,12 +46,13 @@ export default class Login extends Component {
             this.props.history.push('/doctor-portal');
 
         }catch(err){
-            console.log(err);
+            this.setState({ error: err.message });
         }
             
     }
 
     render() {
+        const {error} = this.state;
         return (
             <div className='container col-7 mt-2'>
                 <div className="p-5"></div>
@@ -62,6 +71,11 @@ export default class Login extends Component {
                             type='password' className='form-control'
                             placeholder='Password'/>
                         </div>
+                        <ShowIf isTrue={error}>
+                            <div className="alert alert-danger mt-4">
+                                {error}
+                            </div>
+                        </ShowIf>
                         <div className='text-center mt-4'>
                         <button className ='btn btn-primary px-5 body' type='submit'>
                             Login

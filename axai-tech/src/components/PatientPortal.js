@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Firebase from '../firebase/firebase';
 
 export default class PatientPortal extends Component {
+
+    //TODO: fill this page according to instructions from AxaiTech
     constructor(props){
         super(props);
 
@@ -18,22 +20,7 @@ export default class PatientPortal extends Component {
         }
     }
 
-    async componentDidMount() {
-      //  const {user} = this.props;
-      //  const snap = await this.db.collection('user-role').where('userId', '==', user.uid).get();
-      //  const userRole = snap.docs[0].data();
-//
-      //  if (userRole.role === 'doctor' ) {
-      //      //some action
-      //  }
-      //  if (userRole.role === 'patient' ) {
-      //      //show info
-      //  }
-    }
-
-
     render() {
-        // const {first, surname} = this.state;
         return (
             <div className="text-white">
                 <div className="p-5">

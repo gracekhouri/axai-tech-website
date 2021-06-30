@@ -1,7 +1,15 @@
+/*
+PURPOSE OF THIS PAGE:
+this code is for the register page on the website and handles the register of all users.
+we have made a toggle switch to go between the different roles of users and certain functions
+below reflect certain information needed from either a doctor or a patient
+ */
 import React, { Component } from 'react';
 import './styles.css';
 import Firebase from '../../firebase/firebase';
+import ShowIf from '../ShowIf';
 const auth = Firebase.instance().auth;
+
 
 export default class register extends Component {
 
@@ -27,6 +35,7 @@ export default class register extends Component {
       age: '',
       gender: '',
       diagnosis: '',
+      error: '',
     };
   }
   onNameChanged(e) {
@@ -98,6 +107,10 @@ export default class register extends Component {
     }
   }
 
+/*render functions below are coded to specifically show certain fields of 
+text for either a doctor or for the patient and depending on which way the switch 
+is turned, certain fields of text are shown. */
+
   renderHPCSA() {
     if (this.state.role === 'patient') {return; } 
     return <div className="p-3 body">
@@ -162,30 +175,13 @@ export default class register extends Component {
           />
         </div>
   }
+
+  
   
 
   async register(e) {
     e.preventDefault();
 
-    // try {
-    //   const { email, password } = this.state;
-    //   await auth.createUserWithEmailAndPassword(email, password);
-
-    //   await this.db.collection('user-roles').doc().set({
-    //     userId: this.auth.currentUser.uid,
-    //     role: this.state.role,
-    //   });
-
-    //   await this.db.collection('user-profile').doc().set({
-    //     userId: this.auth.currentUser.uid,
-    //     firstName: this.state.firstName,
-    //     surname: this.state.surname,
-    //   });
-
-    //   this.props.history.push('/doctor-portal');
-    // } catch (err) {
-    //   console.log(err);
-    // }
     try {
       const {email, password} = this.state;
       await auth.createUserWithEmailAndPassword(email, password);
@@ -217,11 +213,13 @@ export default class register extends Component {
 
       this.props.history.push('/doctor-portal');
     } catch(err) {
-      console.log(err);
+      this.setState({ error: err.message });
+      
     }
   }
 
   render() {
+    const {error} = this.state;
     return (
       <div className="container col-7 mt-2">
         <div className="p-5"></div>
@@ -270,12 +268,20 @@ export default class register extends Component {
             <div className='row'>
               <p className='black col-7'>Click Here if a Physician</p>
               <div className="form-check form-switch text-center col-5">
-                <input onClick={()=> this.toggleSwitch()} className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-                {/* <label class="form-check-label" for="flexSwitchCheckDefault">Click Here</label> */}
+                <input onClick={()=> this.toggleSwitch()} 
+                className="form-check-input" 
+                type="checkbox" 
+                id="flexSwitchCheckDefault"/>
               </div>
             </div>
             {this.renderHPCSA()}
             {this.renderPracticeNum()}
+
+            <ShowIf isTrue={error}>
+              <div className="alert alert-danger mt-4">
+                  {error}
+              </div>
+            </ShowIf>
             
             <div className="text-center mt-4 body">
               <button className="btn btn-primary px-5" type="submit">
