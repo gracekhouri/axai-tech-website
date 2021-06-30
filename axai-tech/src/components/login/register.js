@@ -21,7 +21,12 @@ export default class register extends Component {
       email: '',
       password: '',
       role: 'patient',
-      counter: 1
+      counter: 1,
+      hpcsa: '',
+      practiceNum: '',
+      age: '',
+      gender: '',
+      diagnosis: '',
     };
   }
   onNameChanged(e) {
@@ -46,6 +51,36 @@ export default class register extends Component {
     });
   }
 
+  onHPCSAChanged(e) {
+    this.setState({
+      hpcsa: e.target.value,
+    });
+  }
+
+  onPracticeNumChanged(e) {
+    this.setState({
+      practiceNum: e.target.value,
+    });
+  }
+
+  onAgeChanged(e) {
+    this.setState({
+      age: e.target.value
+    });
+  }
+
+  onGenderChanged(e) {
+    this.setState({
+      gender: e.target.value
+    });
+  }
+
+  onDiagnosisChanged(e) {
+    this.setState({
+      diagnosis: e.target.value
+    });
+  }
+
   toggleSwitch() {
 
     let count = this.state.counter;
@@ -63,26 +98,125 @@ export default class register extends Component {
     }
   }
 
+  renderHPCSA() {
+    if (this.state.role === 'patient') {return; } 
+    return <div className="p-3 body">
+          <input
+            value={this.state.hpcsa}
+            onChange={(e) => this.onHPCSAChanged(e)}
+            type="text"
+            className="form-control"
+            placeholder="HPCSA Number"
+          />
+        </div>
+  }
+
+  renderPracticeNum() {
+    if (this.state.role === 'patient') {return; } 
+    return <div className="p-3 body">
+          <input
+            value={this.state.practiceNum}
+            onChange={(e) => this.onPracticeNumChanged(e)}
+            type="text"
+            className="form-control"
+            placeholder="Practice Number"
+          />
+        </div>
+  }
+
+  renderAge() {
+    if (this.state.role === 'doctor') {return; } 
+    return <div className="p-3 body">
+          <input
+            value={this.state.age}
+            onChange={(e) => this.onAgeChanged(e)}
+            type="number"
+            className="form-control"
+            placeholder="Age"
+          />
+        </div>
+  }
+
+  renderGender() {
+    if (this.state.role === 'doctor') {return; } 
+    return <div className="p-3 body">
+          <input
+            value={this.state.gender}
+            onChange={(e) => this.onGenderChanged(e)}
+            type="text"
+            className="form-control"
+            placeholder="Gender"
+          />
+        </div>
+  }
+
+  renderDiagnosis() {
+    if (this.state.role === 'doctor') {return; } 
+    return <div className="p-3 body">
+          <input
+            value={this.state.diagnosis}
+            onChange={(e) => this.onDiagnosisChanged(e)}
+            type="text"
+            className="form-control"
+            placeholder="Primary Diagnosis"
+          />
+        </div>
+  }
+  
+
   async register(e) {
     e.preventDefault();
 
+    // try {
+    //   const { email, password } = this.state;
+    //   await auth.createUserWithEmailAndPassword(email, password);
+
+    //   await this.db.collection('user-roles').doc().set({
+    //     userId: this.auth.currentUser.uid,
+    //     role: this.state.role,
+    //   });
+
+    //   await this.db.collection('user-profile').doc().set({
+    //     userId: this.auth.currentUser.uid,
+    //     firstName: this.state.firstName,
+    //     surname: this.state.surname,
+    //   });
+
+    //   this.props.history.push('/doctor-portal');
+    // } catch (err) {
+    //   console.log(err);
+    // }
     try {
-      const { email, password } = this.state;
+      const {email, password} = this.state;
       await auth.createUserWithEmailAndPassword(email, password);
 
       await this.db.collection('user-roles').doc().set({
-        userId: this.auth.currentUser.uid,
-        role: this.state.role,
+          userId: this.auth.currentUser.uid,
+          role: this.state.role,
       });
 
-      await this.db.collection('user-name').doc().set({
-        userId: this.auth.currentUser.uid,
-        firstName: this.state.firstName,
-        surname: this.state.surname,
-      });
+      if (this.state.role === 'patient') {
+        await this.db.collection('patients').doc().set({
+          userId: this.auth.currentUser.uid,
+          age: this.state.age,
+          diagnosis: this.state.diagnosis,
+          firstName: this.state.firstName,
+          surname: this.state.surname,
+        });
+      }
+
+      if (this.state.role === 'doctor') {
+        await this.db.collection('doctors').doc().set({
+          userId: this.auth.currentUser.uid,
+          firstName: this.state.firstName,
+          surname: this.state.surname,
+          hpcsa: this.state.hpcsa,
+          practiceNum: this.state.practiceNum,
+        });
+      }
 
       this.props.history.push('/doctor-portal');
-    } catch (err) {
+    } catch(err) {
       console.log(err);
     }
   }
@@ -130,6 +264,9 @@ export default class register extends Component {
                 placeholder="Password"
               />
             </div>
+            {this.renderAge()}
+            {this.renderGender()}
+            {this.renderDiagnosis()}
             <div className='row'>
               <p className='black col-7'>Click Here if a Physician</p>
               <div className="form-check form-switch text-center col-5">
@@ -137,6 +274,8 @@ export default class register extends Component {
                 {/* <label class="form-check-label" for="flexSwitchCheckDefault">Click Here</label> */}
               </div>
             </div>
+            {this.renderHPCSA()}
+            {this.renderPracticeNum()}
             
             <div className="text-center mt-4 body">
               <button className="btn btn-primary px-5" type="submit">
